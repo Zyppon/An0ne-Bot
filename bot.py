@@ -43,6 +43,6 @@ except FileNotFoundError:
   
     
 if __name__ == "__main__":
-    bot.run("MTE2MzIyOTQ3NDI4NDkxNjgwNg.G0D16j.VQQWYHDR6P1t7XryWMywMydvs1kjYFv_QKwU40")
+    bot.run("TOKEN")
 else:
     print(f"Error expected , try to run from main file.")
