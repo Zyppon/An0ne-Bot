@@ -1,11 +1,11 @@
 import disnake
-from disnake.ext import commands
+from disnake.ext import commands 
 
 
 class GeneralCommands(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-
+   
     @commands.command()
     async def help(self, ctx):
         help_embed = disnake.Embed(
@@ -15,8 +15,9 @@ class GeneralCommands(commands.Cog):
             color=disnake.Colour.green(),
         )
         await ctx.send(embed=help_embed)
-
+   
     @commands.slash_command(description="Information & Help Center.")
+    
     async def help(self, ctx):
         help_embed = disnake.Embed(
             title="Help Center",
@@ -27,33 +28,31 @@ class GeneralCommands(commands.Cog):
 
         # helpEmbed.set_thumbnail(url=thumbnail_path)
         await ctx.send(embed=help_embed)
+        
 
+    
+ 
     @commands.command()
-    async def anon_create(self, ctx):
-        guild = ctx.guild
-        category = await guild.create_category_channel(name="An0n W0rld")
-
-        if category:
-            channel = await category.create_text_channel(name="anon-verify")
-            channel2 = await category.create_text_channel(name="anon-chat")
-            role = await guild.create_role(name="Identity Hidden")
-            await channel.set_permissions(role, read_messages=True, send_messages=None)
-
-            anonverify_embed = disnake.Embed(
-                title="Verify Your Role To Enter In a Anonymous Chat",
-                description="Welcome to our Anonymous Chat! To maintain a safe and respectful environment, "
-                "we kindly ask you to verify your role. This helps us ensure that everyone can have a "
-                "secure and enjoyable experience while keeping their identity private",
-                color=disnake.Colour.green(),
-            )
-
-            await channel.send(embed=anonverify_embed)
-
-        else:
-            await ctx.send(
-                f"A error was expected . Make sure about your permission and my permissions."
-            )
+    async def avatar(self , ctx , member:disnake.Member = None):
+        member = member or ctx.author
+        avatar_url = member.display_avatar.url
+       # if avatar_url.endswith((".PNG",".JPEG",".GIF")):
+        
+            
+        avatar_embed = disnake.Embed(
+        title = f"{member}'s avatar :",
+        color = disnake.Color.green(),
+        )
+        avatar_embed.set_image(url=avatar_url)
+        await ctx.send(embed=avatar_embed)
+       # else:
+          #  await ctx.send(f"Avatar does not have a good format . It should to be `JPEG`,`PNG`,`GIF`")
+     
+ 
+        
+        
 
 
 def setup(bot):
     bot.add_cog(GeneralCommands(bot))
+    print(f"> Estension{__name__} is ready")
