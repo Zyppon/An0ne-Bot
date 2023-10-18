@@ -60,5 +60,7 @@ if __name__ == "__main__":
         except Exception as error:
             print(f"Failed to load extension {extension}", file=sys.stderr)
             errors = traceback.format_exception(type(error), error, error.__traceback__)
-
-    bot.run("TOKEN")
+    with open ("secret.txt","r") as f:
+        file = f.readlines()   
+    file_content = ''.join(file)
+    bot.run(file_content)
