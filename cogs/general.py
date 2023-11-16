@@ -46,13 +46,7 @@ class GeneralCommands(commands.Cog):
         await ctx.send(embed=avatar_embed)
        # else:
           #  await ctx.send(f"Avatar does not have a good format . It should to be `JPEG`,`PNG`,`GIF`")
-     
-    @commands.command()
-    async def test(self , ctx):
-        with open ("test.txt","r") as f:
-          file = f.readlines()   
-        file_content = ''.join(file)
-        await ctx.send(file_content)
+ 
      
  
         

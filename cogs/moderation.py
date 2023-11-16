@@ -32,6 +32,12 @@ class ModerationCommands(commands.Cog):
                 f"A error was expected . Make sure about your permission and my permissions."
             )
     
+         
+    @commands.command()
+    async def change_nick(self , ctx , member : disnake.Member , nick):
+               await member.edit(nick=nick)
+               await ctx.send(f"The nickname was changed for {member.mention}")
+
         
 def setup(bot):
     bot.add_cog(ModerationCommands(bot))
